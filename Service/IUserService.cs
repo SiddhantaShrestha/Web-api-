@@ -6,10 +6,9 @@ namespace web_api.Service
     public interface IUserService
     {
         bool AddUser(UserRegisterDTO user);
-        bool UpdateUser(string email, UserRegisterDTO updatedUser); 
+        bool UpdateUser(string email, UserRegisterDTO updatedUser);
         bool DeleteUser(string email);
-        bool FindUser(string email);
-
+        User? FindUser(string email);
 
     }
 }

@@ -72,7 +72,8 @@ namespace web_api.Controllers
         [HttpPost("CreateUser")]
         public IActionResult CreateUser([FromBody] UserRegisterDTO user)
         {
-            if (_userService.FindUser(user.Email))
+            if (_userService.FindUser(user.Email) != null)
+
             {
                 return Conflict("User already exists");
             }
@@ -91,7 +92,7 @@ namespace web_api.Controllers
         [HttpDelete("RemoveUser")]
         public IActionResult RemoveUser([FromQuery] string email)
         {
-            if (!_userService.FindUser(email))
+            if (_userService.FindUser(email) == null)
             {
                 return NotFound("User not found");
             }
@@ -110,7 +111,7 @@ namespace web_api.Controllers
         [HttpPut("UpdateUser/{email}")]
         public IActionResult UpdateUser(string email, [FromBody] UserRegisterDTO updatedUser)
         {
-            if (!_userService.FindUser(email))
+            if (_userService.FindUser(email) == null)
             {
                 return NotFound("User not found");
             }
@@ -125,5 +126,6 @@ namespace web_api.Controllers
                 return BadRequest("Failed to update user");
             }
         }
+
     }
 }

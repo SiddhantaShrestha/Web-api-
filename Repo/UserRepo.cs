@@ -3,10 +3,10 @@ using web_api.Entities;
 
 namespace web_api.Repo
 {
-    public class UserRepo: IUserRepo
+    public class UserRepo : IUserRepo
     {
         private ApplicationDBContext _context;
-        public UserRepo(ApplicationDBContext context) 
+        public UserRepo(ApplicationDBContext context)
         {
             _context = context;
         }
